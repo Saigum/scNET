@@ -29,7 +29,6 @@ NUM_LAYERS = 3
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 warnings.filterwarnings('ignore')
-torch.manual_seed(42)
 
 
 def build_network(obj, net, biogrid_flag = False, human_flag = False):
@@ -319,6 +318,7 @@ def run_scNET(obj,pre_processing_flag = True ,biogrid_flag = False,
     Returns:
       scNET: A trained scNET model.
     """
+    torch.manual_seed(42)
     if pre_processing_flag:
        obj = pre_processing(obj,n_neighbors)
 
